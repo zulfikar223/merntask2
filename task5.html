@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task-5</title>
+    <style>
+        .container {
+            position: relative;
+            left: 500px;
+            top: 100px;
+        }
+        tr, td {
+            padding: 10px;
+        }
+        .error {
+            color: red;
+            font-size: 12px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form id="myForm">
+            <table>
+                <tr>
+                    <td><label for="name">Name</label></td>
+                    <td><input type="text" id="name"><span class="error" id="nameError">This field is required</span></td>
+                </tr>
+                <tr>
+                    <td><label for="email">E-mail</label></td>
+                    <td><input type="email" id="email"><span class="error" id="emailError">Please enter a valid email</span></td>
+                </tr>
+                <tr>
+                    <td><label for="website">Website</label></td>
+                    <td><input type="url" id="website"><span class="error" id="websiteError">Please enter a valid URL</span></td>
+                </tr>
+                <tr>
+                    <td><label for="message">Message</label></td>
+                    <td><textarea id="message"></textarea><span class="error" id="messageError">This field is required</span></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><button type="button" onclick="validateForm()">Submit</button></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+    <script>
+        function validateForm() {
+            let isValid = true;
+
+            
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const website = document.getElementById('website').value.trim();
+            const message = document.getElementById('message').value.trim();
+
+            
+            const nameError = document.getElementById('nameError');
+            const emailError = document.getElementById('emailError');
+            const websiteError = document.getElementById('websiteError');
+            const messageError = document.getElementById('messageError');
+
+           
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            const urlRegex = /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/i;
+
+            
+            if (!name) {
+                nameError.style.display = 'inline';
+                isValid = false;
+            } else {
+                nameError.style.display = 'none';
+            }
+
+          
+            if (!email) {
+                emailError.textContent = 'This field is required';
+                emailError.style.display = 'inline';
+                isValid = false;
+            } else if (!emailRegex.test(email)) {
+                emailError.textContent = 'Please enter a valid email';
+                emailError.style.display = 'inline';
+                isValid = false;
+            } else {
+                emailError.style.display = 'none';
+            }
+
+            
+            if (!website) {
+                websiteError.textContent = 'This field is required';
+                websiteError.style.display = 'inline';
+                isValid = false;
+            } else if (!urlRegex.test(website)) {
+                websiteError.textContent = 'Please enter a valid URL';
+                websiteError.style.display = 'inline';
+                isValid = false;
+            } else {
+                websiteError.style.display = 'none';
+            }
+
+           
+            if (!message) {
+                messageError.style.display = 'inline';
+                isValid = false;
+            } else {
+                messageError.style.display = 'none';
+            }
+
+            if (isValid) {
+                alert('Form submitted successfully!');
+                
+            }
+        }
+    </script>
+</body>
+</html>

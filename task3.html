@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task-3</title>
+    <style>
+        input {
+            margin: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <table>
+            <tr>
+                <td>1st Number:</td>
+                <td><input type="text" id="id1"></td>
+            </tr>
+            <tr>
+                <td>2nd Number:</td>
+                <td><input type="text" id="id2"><br></td>
+            </tr>
+            <tr>
+                <td><button onclick="showMultiply()" type="button">Multiply</button>
+                    <button onclick="showDivide()" type="button">Divide</button>
+                </td>
+            </tr>
+        </table>
+        <p id="p1"></p>
+    </div>
+    <script>
+        function multiply(num1, num2) {
+            return num1 * num2;
+        }
+
+        function divide(num1, num2) {
+            if (num2 == 0) {
+                return 'Cannot divide by zero';
+            }
+            return num1 / num2;
+        }
+
+        function showMultiply() {
+            let val1 = parseFloat(document.getElementById("id1").value);
+            let val2 = parseFloat(document.getElementById("id2").value);
+            let result = multiply(val1, val2);
+            document.getElementById("p1").innerText = "The Result: " + result;
+        }
+
+        function showDivide() {
+            let val1 = parseFloat(document.getElementById("id1").value);
+            let val2 = parseFloat(document.getElementById("id2").value);
+            let result = divide(val1, val2);
+            document.getElementById("p1").innerText = "The Result: " + result;
+        }
+    </script>
+</body>
+
+</html>

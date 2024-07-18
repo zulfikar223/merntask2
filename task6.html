@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task-6</title>
+    <style>
+        .container {
+            background-color: rgb(230, 226, 226);
+            width: fit-content;
+            height: fit-content;
+            border: 1px solid black;
+            margin: 10px 5px;
+            position: relative;
+            margin-right: auto;
+            margin-left: auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+        }
+        .input-container {
+            position: relative;
+            margin: 10px 5px;
+        }
+        .input-container svg {
+            position: absolute;
+            top: 50%;
+            left: 10px;
+            transform: translateY(-50%);
+        }
+        input {
+            padding: 10px 10px 10px 30px; 
+            width: 220px; 
+            font-size: 1em;
+            box-sizing: border-box;
+        }
+        p {
+            font-style: italic;
+            text-align: center;
+            font-size: x-large;
+        }
+        .btn {
+            width: 240px; 
+            padding: 10px;
+            background-color: blue;
+            color: white;
+            border: none;
+            margin: 10px 5px;
+        }
+        .remember-container {
+            display: flex;
+            width: 100px; 
+        }
+        .remember-container, a {
+            display: flex;
+        }
+        a {
+            text-decoration: none;
+            color: blue;
+            margin-left: 100px;
+        }
+        .sub-container, a {
+           display: flex;
+           justify-content: center;
+           align-items: center;
+           text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Instagram</p><br>
+        <div class="input-container">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+                <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+            </svg>
+            <input type="text" placeholder="Username">
+        </div>
+        <div class="input-container">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="black" class="bi bi-bag" viewBox="0 0 16 16">
+                <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z"/>
+            </svg>
+            <input type="password" placeholder="Password">
+        </div>
+        <button class="btn">Log in</button><br>
+        <div class="remember-container">
+            <input type="checkbox" id="remember-me">
+            <label for="remember-me">Remember me</label>
+            <a href="#">Forgot Password?</a>
+        </div>
+    </div>
+    <div class="sub-container">
+        <span>Don't have an account!</span>
+        <a href="#">Sign up here</a>
+    </div>
+    <script>
+        document.querySelector('.btn').addEventListener('click', function(event) {
+            const inputs = document.querySelectorAll('.input-container input');
+            let allFilled = true;
+            inputs.forEach(input => {
+                if (input.value.trim() === '') {
+                    allFilled = false;
+                    if (!input.nextElementSibling || input.nextElementSibling.tagName !== 'SPAN') {
+                        const errorMessage = document.createElement('span');
+                        errorMessage.textContent = 'This is required';
+                        errorMessage.style.color = 'red';
+                        errorMessage.style.fontSize = 'small';
+                        errorMessage.style.marginLeft = '10px';
+                        input.parentElement.appendChild(errorMessage);
+                    }
+                } else {
+                    if (input.nextElementSibling && input.nextElementSibling.tagName === 'SPAN') {
+                        input.parentElement.removeChild(input.nextElementSibling);
+                    }
+                }
+            });
+            if (!allFilled) {
+                event.preventDefault();
+            }
+        });
+    </script>
+</body>
+</html>

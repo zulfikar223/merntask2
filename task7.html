@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task-7</title>
+    
+    <style>
+        h2 {
+            color: rgb(0, 0, 133);
+        }
+        div{
+            margin-left: 30%;
+        }
+        button {
+            margin: 5px;
+            font-size: large;       
+        }
+        img {
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+
+        
+    <img id="myimg" src="https://www.javatpoint.com/oprweb/train1.png"/>     
+      
+    <h2>Click the following button to handle the animation</h2> 
+    <div>    
+    <button onclick="start()">Start</button>   
+    <button onclick="stop()">Stop</button>
+    </div>  
+
+    <script>
+        let img;
+        let interval;
+
+        function init() {
+            img = document.getElementById('myimg');
+            img.style.left = '50px';
+        }
+
+        function start() {
+            if (interval) {
+                return;
+            }
+            interval = setInterval(() => {
+                img.style.left = parseInt(img.style.left) + 10 + 'px';
+                if (parseInt(img.style.left) > window.innerWidth) {
+                    img.style.left = '0px';
+                }
+            }, 100); 
+        }
+
+        function stop() {
+            clearInterval(interval);
+            interval = null;
+        }
+
+        window.onload = init;
+    </script>
+    
+</body>
+</html>

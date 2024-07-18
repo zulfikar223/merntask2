@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task-4</title>
+</head>
+
+<body>
+    <button onclick="showDate()" type="button">Show date</button>
+    <p id="p1"></p>
+    <button onclick="showTime()" type="button">Show time</button>
+    <p id="p2"></p>
+    <script>
+        function getLongDateFormat() {
+            const date = new Date();
+            const options = {
+                day: 'numeric',
+                month: 'long',
+                year: 'numeric'
+            };
+            return date.toLocaleDateString('en-US', options);
+        }
+
+        function showDate() {
+            document.getElementById("p1").innerHTML = getLongDateFormat();
+        }
+
+        function showTime() {
+            document.getElementById("p2").innerHTML = Date();
+        }
+    </script>
+</body>
+
+</html>
